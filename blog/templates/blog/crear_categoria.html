@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card p-4 shadow-sm">
+
+                <h2 class="mb-4 text-center">Crear Categoría</h2>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger small">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>               
+                        {% endfor %}
+
+                        <div class="d-grid">
+
+                            <button type="submit" class="btn btn-dark">
+                                Guardar
+                            </button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock  %}
